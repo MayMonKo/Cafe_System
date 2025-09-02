@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-
-class CafeAppConfig(AppConfig):
+class CafeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cafe_app'
+    name = 'cafe'   # ✅ not cafe_app
