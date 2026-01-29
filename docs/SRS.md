@@ -264,5 +264,3 @@ Analytics shall be accessible **only to managers** and shall be implemented usin
 * Enums
 * Constraints
 * Analytics-ready fields
-
-You’ve done Phase 0 *exactly right*.
