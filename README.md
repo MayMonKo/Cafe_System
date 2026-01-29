@@ -39,8 +39,6 @@ PostgreSQL
 
 ### 🔹 Analytics is **NOT** a separate system
 
-It is a **layer inside your backend**, powered by **SQL**.
-
 ### Analytics Flow
 
 ```
