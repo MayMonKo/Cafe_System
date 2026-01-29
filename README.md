@@ -1,11 +1,4 @@
-Perfect — **this is a sensible call**.
-Choosing **JavaScript over TypeScript** because you’re fluent is the *right engineering decision*, not a downgrade. Interviewers care about **clarity and correctness**, not TS purity.
-
-Let’s now **place analytics, ML, and security cleanly into your existing stack** without bloating it.
-
----
-
-# ☁️ Cloud Café — Final Web Architecture (With Analytics, ML & Security)
+# ☁️ Cloud Café — Web Architecture (With Analytics, ML & Security)
 
 > Scope: **Web app only**
 > Frontend: **Vercel**
@@ -15,7 +8,7 @@ Let’s now **place analytics, ML, and security cleanly into your existing stack
 
 ---
 
-## 1️⃣ Final Tech Stack (Locked)
+## Final Tech Stack 
 
 ### Frontend (Web App – Vercel)
 
@@ -40,11 +33,9 @@ JWT Authentication
 PostgreSQL
 ```
 
-This is **clean, realistic, and interview-safe**.
-
 ---
 
-## 2️⃣ Where Analytics Lives (Very Important)
+## Where Analytics Lives 
 
 ### 🔹 Analytics is **NOT** a separate system
 
@@ -68,11 +59,9 @@ Manager Dashboards (React)
 * Backend exposes `/api/analytics/*`
 * Frontend only **visualizes results**
 
-📌 This is how real dashboards work.
-
 ---
 
-## 3️⃣ Analytics Layer (Backend – Express)
+## Analytics Layer (Backend – Express)
 
 ### Example Endpoints
 
@@ -97,20 +86,12 @@ Each endpoint:
 * Retention cohorts
 * Product ranking
 
-This directly satisfies:
-
-* End-to-End Analytics Dashboard
-* SQL-Heavy Analytics Project
-
 ---
 
-## 4️⃣ Where ML Lives (Simple & Correct)
+## 4️Where ML Lives (Simple & Correct)
 
-### 🔹 ML = **Optional Analytics Enhancement**
+### ML = **Analytics Enhancement**
 
-Not a separate “AI system”.
-
-### Recommended Approach (Best for You)
 
 **ML runs as Python scripts / notebooks**, not in production APIs.
 
@@ -131,25 +112,19 @@ Dashboard reads results
 ### Example ML Outputs
 
 * Sales forecast (next 7 days)
-* Churn risk score per customer
 * Product demand score
 
-📌 Backend & frontend **do not run ML** — they **consume results**.
-
-> Interview line:
-> “Machine learning is used offline for forecasting and decision support, not as a real-time service.”
-
-That sounds mature.
+Backend & frontend **do not run ML** — they **consume results**.
 
 ---
 
-## 5️⃣ Security (This Is Where Many Projects Fail)
+## Security 
 
-You actually have **three security layers**.
+**Three security layers**.
 
 ---
 
-## 🔐 1. Authentication (JWT)
+## 1. Authentication (JWT)
 
 * Login → issue JWT
 * JWT stored in HTTP-only cookie or memory
@@ -157,7 +132,7 @@ You actually have **three security layers**.
 
 ---
 
-## 🔐 2. Role-Based Access Control (RBAC)
+## 2. Role-Based Access Control (RBAC)
 
 ### Roles
 
@@ -184,19 +159,16 @@ authorize(['manager'])
 
 ---
 
-## 🔐 3. Data Security
+## 3. Data Security
 
 * SQL parameterized queries (no SQL injection)
 * Input validation (Zod / Joi / custom)
 * Password hashing (bcrypt)
 * HTTPS (Render + Vercel)
 * No direct DB access from frontend
-
-📌 These points are **interview gold**.
-
 ---
 
-## 6️⃣ Final Architecture (Mental Model)
+## 6️Final Architecture (Mental Model)
 
 ```
 [ React Web App ]  ← Vercel
@@ -212,42 +184,342 @@ authorize(['manager'])
 [ PostgreSQL ]
 ```
 
-This is:
+---
 
-* Simple
-* Professional
-* Scalable
-* Easy to explain
+## SYSTEM ROLES (LOCKED)
+
+| Role     | Purpose                              |
+| -------- | ------------------------------------ |
+| Customer | Place orders                         |
+| Cashier  | Process & manage orders              |
+| Manager  | Monitor performance & make decisions |
+| Admin    | Govern the system                    |
 
 ---
 
-## 7️⃣ How You Explain This in One Answer (Interview)
+# CUSTOMER (End User / Buyer)
 
-> “The web app is built with React and JavaScript on Vercel. A Node.js Express backend on Render handles authentication, role-based access, analytics endpoints, and integrates with PostgreSQL. Analytics are SQL-driven, while machine learning is used offline for forecasting and insights, with results stored back into the database for visualization.”
+### Goal
 
-That answer is **excellent**.
-
----
-
-## 8️⃣ Final Sanity Check (You’re Doing This Right)
-
-✅ JavaScript over TypeScript — justified
-✅ PostgreSQL — analytics-ready
-✅ Analytics via SQL — correct
-✅ ML offline — mature choice
-✅ Security layered — professional
-
-You’re not overengineering.
-You’re building **exactly what a strong analyst / junior engineer portfolio should show**.
+Order food efficiently and track purchases.
 
 ---
 
-### Next (Pick One)
+### Core Use Cases
 
-1️⃣ Define **analytics SQL queries**
-2️⃣ Design **analytics dashboard pages**
-3️⃣ Write **RBAC middleware**
-4️⃣ Plan **ML forecasting notebook**
-5️⃣ Convert this into **FYP system architecture section**
+#### UC-C1: Browse Menu
 
-Tell me the next move — we keep momentum.
+* View drinks & food
+* Filter by category
+* View prices & customization options
+
+**Flow**
+
+```
+Login / Guest
+→ View Menu
+→ Select Item
+→ Customize
+```
+
+---
+
+#### UC-C2: Place Order
+
+* Select quantity
+* Customize items
+* Submit order
+
+**Flow**
+
+```
+Add to Cart
+→ Review Order
+→ Confirm Order
+→ Order Sent to System
+```
+
+ Order status = `pending`
+
+---
+
+#### UC-C3: Track Order
+
+* View order status
+* View order history
+
+**Flow**
+
+```
+Orders Page
+→ Current Order Status
+→ Completed Orders
+```
+
+---
+
+### What Customer CANNOT Do
+
+* See analytics
+* Edit menu
+* Manage users
+
+---
+
+# CASHIER (Operational Staff)
+
+### Goal
+
+Handle daily order operations quickly and accurately.
+
+---
+
+### Core Use Cases
+
+#### UC-CA1: View Incoming Orders
+
+* See new orders
+* View order details
+
+**Flow**
+
+```
+Login
+→ Orders Dashboard
+→ New Orders List
+```
+
+---
+
+#### UC-CA2: Update Order Status
+
+* Mark as `paid`
+* Mark as `preparing`
+* Mark as `completed`
+* Cancel order (with reason)
+
+**Flow**
+
+```
+Select Order
+→ Update Status
+→ System Saves Timestamp
+```
+
+---
+
+#### UC-CA3: Handle Walk-In Orders
+
+* Create order manually
+* Mark as paid immediately
+
+**Flow**
+
+```
+New Order
+→ Select Items
+→ Mark Paid
+→ Complete
+```
+
+---
+
+### What Cashier CANNOT Do
+
+* View analytics dashboards
+* Edit pricing
+* Create users
+
+---
+
+# MANAGER (Decision Maker — MOST IMPORTANT ROLE)
+
+### Goal
+
+Make **data-driven operational and business decisions**.
+
+---
+
+## Core Manager Use Cases
+
+---
+
+### UC-M1: View Performance Dashboard
+
+**KPIs**
+
+* Revenue
+* Orders
+* AOV
+* Growth %
+
+**Flow**
+
+```
+Login
+→ Analytics Dashboard
+→ Select Time Range
+→ View KPIs
+```
+
+---
+
+### UC-M2: Analyze Product Performance
+
+* Top-selling items
+* Low-performing items
+* Category contribution
+
+**Flow**
+
+```
+Analytics
+→ Products
+→ Filter by Date / Category
+→ Identify Trends
+```
+
+---
+
+### UC-M3: Understand Customer Behavior
+
+* New vs returning customers
+* Retention cohorts
+* High-value customers
+
+**Flow**
+
+```
+Analytics
+→ Customers
+→ Cohort View
+→ Retention Insights
+```
+
+---
+
+### UC-M4: Monitor Time-Based Demand
+
+* Peak hours
+* Daily / weekly patterns
+
+**Flow**
+
+```
+Analytics
+→ Time Analysis
+→ Identify Peak Periods
+```
+
+---
+
+### UC-M5: Review Forecasts & Alerts
+
+* Short-term sales forecast
+* Declining product alerts
+
+**Flow**
+
+```
+Analytics
+→ Forecasts
+→ Review Recommendations
+```
+
+Manager **does NOT directly modify data** — they **decide**, not execute.
+
+---
+
+### What Manager CANNOT Do
+
+* Create or delete users
+* Change system roles
+* Access system logs
+
+---
+
+# ADMIN (System Owner / IT)
+
+### Goal
+
+Ensure **system integrity, security, and configuration**.
+
+---
+
+### Core Admin Use Cases
+
+---
+
+### UC-A1: Manage Users
+
+* Create cashier / manager accounts
+* Assign roles
+* Disable users
+
+**Flow**
+
+```
+Login
+→ User Management
+→ Create / Update User
+```
+
+---
+
+### UC-A2: Manage System Configuration
+
+* Business hours
+* Tax rates
+* Service settings
+
+**Flow**
+
+```
+Settings
+→ Update Configuration
+→ Save
+```
+
+---
+
+### UC-A3: Monitor System Health
+
+* View logs
+* Monitor errors
+* Check API uptime
+
+**Flow**
+
+```
+System Logs
+→ Review Events
+→ Take Action
+```
+
+---
+
+### UC-A4: Data Maintenance (Restricted)
+
+* Archive old data
+* Trigger re-analytics
+* Backup database
+
+Admin **never** analyzes revenue.
+
+---
+
+## End-to-End Operational Flow (REAL LIFE)
+
+```
+Customer places order
+   ↓
+Cashier processes order
+   ↓
+Order data stored (PostgreSQL)
+   ↓
+Analytics queries aggregate data
+   ↓
+Manager reviews dashboards
+   ↓
+Manager makes decisions
+```
