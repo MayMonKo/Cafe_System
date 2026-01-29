@@ -86,7 +86,7 @@ Each endpoint:
 
 ---
 
-## 4️Where ML Lives (Simple & Correct)
+## Where ML Lives (Simple & Correct)
 
 ### ML = **Analytics Enhancement**
 
@@ -520,4 +520,263 @@ Analytics queries aggregate data
 Manager reviews dashboards
    ↓
 Manager makes decisions
+```
+---
+## A. Manager Analytics Modules
+
+### 1. Executive Overview (Most Important)
+
+**Purpose:** Daily/weekly decision check
+
+**KPIs**
+
+* Total Revenue
+* Total Orders
+* Average Order Value (AOV)
+* Growth vs previous period
+* Peak hour indicator
+
+**Visuals**
+
+* KPI cards
+* Revenue trend line
+* Orders by hour bar chart
+
+This is the **default landing page for managers**.
+
+---
+
+### 2. Product Performance Analytics
+
+**Purpose:** Menu & pricing decisions
+
+**Insights**
+
+* Top-selling items
+* Revenue by category
+* Low-performing items
+* Product trend (up / down)
+
+**Visuals**
+
+* Bar chart (Top 10 products)
+* Pie / stacked bar (category contribution)
+* Trend sparkline per product
+
+**Manager Decisions**
+
+* Remove low performers
+* Promote high-margin items
+
+---
+
+### 3. Customer Analytics
+
+**Purpose:** Retention & loyalty
+
+**Insights**
+
+* New vs returning customers
+* Repeat purchase rate
+* Cohort retention (weekly/monthly)
+* High-value customers
+
+**Visuals**
+
+* Cohort table
+* Donut chart
+* Histogram of spend
+
+---
+
+### 4. Time & Operations Analytics
+
+**Purpose:** Staffing & operations
+
+**Insights**
+
+* Peak hours
+* Busiest days
+* Order volume trends
+
+**Visuals**
+
+* Heatmap (hour vs day)
+* Line chart
+
+---
+
+### 5. Forecasts & Alerts (Optional but Strong)
+
+**Purpose:** Planning
+
+**Insights**
+
+* Next 7-day sales forecast
+* Declining product alerts
+
+**Visuals**
+
+* Forecast line
+* Alert cards
+
+---
+
+---
+
+## Role-Based Pages (Exactly What Each Role Sees)
+
+This is **critical**. Real systems feel different per role.
+
+---
+
+## CUSTOMER UI
+
+### Pages
+
+```
+Home / Landing
+Menu
+Cart
+Orders
+Profile
+```
+
+### Look & Feel
+
+* Friendly
+* Visual
+* Product-focused
+* Minimal data
+
+### Landing Page (Customer)
+
+* Hero section
+* Featured drinks
+* Promotions
+* CTA: “Order Now”
+
+---
+
+## CASHIER UI
+
+### Pages
+
+```
+Orders (Live)
+POS / New Order
+Order History
+```
+
+### Look & Feel
+
+* Functional
+* Dense
+* Fast
+* No charts
+
+### Default Page
+
+**Live Orders Queue**
+
+* Order ID
+* Status
+* Time
+* Action buttons
+
+---
+
+## MANAGER UI (Analytics-Heavy)
+
+### Pages
+
+```
+Dashboard (Overview)
+Analytics
+ ├── Products
+ ├── Customers
+ ├── Time & Operations
+ ├── Forecasts
+Reports (Optional)
+```
+
+### Look & Feel
+
+* Calm
+* Professional
+* Data-first
+* Clear trends
+
+### Default Page
+
+**Executive Overview Dashboard**
+
+---
+
+## ADMIN UI
+
+### Pages
+
+```
+User Management
+System Settings
+Audit Logs
+```
+
+### Look & Feel
+
+* Minimal
+* Technical
+* No charts
+* No KPIs
+
+---
+
+## Landing Page (Very Important)
+
+**Two landing pages**.
+
+---
+
+## Public Landing Page (Before Login)
+
+**Audience:** Customers 
+
+### Sections
+
+1. Hero 
+2. Featured menu items
+3. How it works
+4. CTA buttons:
+
+   * Register
+   * Login
+
+This sells the product.
+
+---
+
+## Role-Based Landing (After Login)
+
+| Role     | Landing Page    |
+| -------- | --------------- |
+| Customer | Menu            |
+| Cashier  | Live Orders     |
+| Manager  | Dashboard       |
+| Admin    | User Management |
+
+This is **real SaaS behavior**.
+
+---
+
+## 4️⃣ How Analytics Connect Technically 
+
+```
+PostgreSQL
+  ↓
+SQL Analytics Queries
+  ↓
+Express API (/analytics)
+  ↓
+React Charts
 ```
