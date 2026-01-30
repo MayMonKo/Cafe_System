@@ -1,8 +1,5 @@
-# PHASE 1.1 — High-Level System Architecture
+# PHASE 1.1 — System Architecture
 
-## Cloud Café — Web-Based Café Management & Analytics System
-
----
 
 ## 1. Purpose of This Architecture
 
