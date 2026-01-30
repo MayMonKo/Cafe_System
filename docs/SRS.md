@@ -1,6 +1,6 @@
 # Software Requirements Specification (SRS)
 
-## Cloud Café — Web-Based Café Management & Analytics System
+## Bear's Bakery — Web-Based Café Management & Analytics System
 
 **(PHASE 0 — FINAL, FROZEN VERSION)**
 
