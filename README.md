@@ -1,4 +1,4 @@
-# ☁️ Cloud Café — Web Architecture (With Analytics, ML & Security)
+# Bear Café — Web Architecture (With Analytics, ML & Security)
 
 > Scope: **Web app only**
 > Frontend: **Vercel**
